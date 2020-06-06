@@ -1,0 +1,130 @@
+# BunsenLabs Main Menu
+
+@text,,6,6,150,20,2,left,top,auto,#000000 0,<span size="large">🔍︎</span>
+@search,,24,3,150,20,2,left,top,auto,#000000 0,Type to Search
+
+^sep()
+Run Program,gmrun
+^sep()
+Terminal,x-terminal-emulator
+Web Browser,x-www-browser
+File Manager,bl-file-manager
+Text Editor,bl-text-editor
+Media Player,bl-media-player
+^sep()
+Applications,^checkout(lx-apps)
+^sep()
+BL Utilities,^checkout(bl-utilities)
+Places,^pipe(jgmenu_run ob --cmd="bl-places-pipemenu" --tag="bl-places-pipemenu")
+Recent Files,^pipe(jgmenu_run ob --cmd="bl-recent-files-pipemenu -rl15" --tag="bl-recent-files-pipemenu")
+^sep()
+Preferences,^checkout(bl-preferences)
+System,^checkout(bl-system)
+^sep()
+#Help &amp; Resources,^pipe(jgmenu_run ob --cmd="bl-help-pipemenu" --tag="bl-help-pipemenu")
+Help &amp; Resources,^checkout(bl-help-menu)
+Display Keybinds,^pipe(jgmenu_run ob --cmd="bl-kb-pipemenu" --tag="bl-kb-pipemenu")
+^sep()
+Lock Screen,bl-lock
+Exit,bl-exit
+
+. /usr/share/bunsen/configs/menu-includes/help-menu
+
+^tag(bl-utilities)
+Back,^back()
+Take Screenshot,^pipe(bl-scrot-pipemenu)
+SSH,^pipe(jgmenu_run ob --cmd="bl-sshconfig-pipemenu" --tag="bl-sshconfig-pipemenu")
+Remote Desktop,^pipe(jgmenu_run ob --cmd="bl-remote-desktop-pipemenu" --tag="bl-remote-desktop-pipemenu")
+#Dropbox,^pipe(jgmenu_run ob --cmd="bl-dropbox-pipemenu" --tag="bl-dropbox-pipemenu")
+BLOB Themes Manager,bl-obthemes
+
+^tag(bl-preferences)
+Back,^back()
+BunsenLabs,^checkout(bl-blConfig)
+Openbox,^checkout(bl-obConfig)
+jgmenu,^checkout(bl-jgmenuConfig)
+Keybinds,^checkout(bl-xbindkeysConfig)
+Compositor,^pipe(jgmenu_run ob --cmd="bl-compositor" --tag="bl-compositor")
+Conky,^pipe(jgmenu_run ob --cmd="bl-conky-pipemenu" --tag="bl-conky-pipemenu")
+Tint2,^pipe(jgmenu_run ob --cmd="bl-tint2-pipemenu" --tag="bl-tint2-pipemenu")
+Appearance,lxappearance
+Font configuration,bl-text-editor ~/.config/fontconfig/fonts.conf
+Wallpaper,nitrogen
+Notifications,xfce4-notifyd-config
+Power Management,xfce4-power-manager-settings
+dmenu,^checkout(bl-dmenuconfig)
+gmrun,^checkout(bl-gmrunconfig)
+Display,^checkout(bl-DisplaySettings)
+
+BunsenLabs Session,^tag(bl-blConfig)
+Back,^back()
+Edit autostart,bl-text-editor ~/.config/bunsen/autostart
+Edit environment,bl-text-editor ~/.config/bunsen/environment
+^sep(Manuals)
+bunsenlabs-session,x-terminal-emulator -T 'man bunsenlabs-session' -e man bunsenlabs-session
+xdg-autostart,x-terminal-emulator -T 'man bl-xdg-autostart' -e man bl-xdg-autostart
+
+Openbox,^tag(bl-obConfig)
+Back,^back()
+Edit bl-rc.xml,bl-text-editor ~/.config/openbox/bl-rc.xml
+^sep()
+WM Preferences,obconf --config-file ~/.config/openbox/bl-rc.xml
+^sep()
+Reconfigure,openbox --reconfigure
+Restart,openbox --restart
+
+jgmenu,^tag(bl-jgmenuConfig)
+Back,^back()
+Edit Menu Content,bl-text-editor ~/.config/jgmenu/prepend.csv
+Edit Menu Settings,bl-text-editor ~/.config/jgmenu/jgmenurc
+^sep()
+Sync Theme w. Openbox,JGMENU_RCXML=$HOME/.config/openbox/bl-rc.xml jgmenu init --apply-obtheme
+^sep(Help)
+man page,x-terminal-emulator -T 'man jgmenu' -e man jgmenu
+tutorial,x-terminal-emulator -T 'man jgmenututorial' -e man jgmenututorial
+
+Keybinds,^tag(bl-xbindkeysConfig)
+Back,^back()
+Edit .xbindkeysrc,bl-text-editor ~/.xbindkeysrc
+Restart,sh -c 'pkill -x xbindkeys; xbindkeys_autostart'
+^sep()
+# Next entry requires tk
+#Show Keybinds,xbindkeys_show
+GUI Keybinds editor,xbindkeys-config
+^sep(Help)
+man page,x-terminal-emulator -T 'man xbindkeys' -e man xbindkeys
+
+dmenu,^tag(bl-dmenuconfig)
+Back,^back()
+Edit Start-up Script,bl-text-editor ~/.config/dmenu/dmenu-bind.sh
+^sep(Help)
+man page,x-terminal-emulator -T 'man dmenu' -e man dmenu
+
+gmrun,^tag(bl-gmrunconfig)
+Back,^back()
+Edit Config File,bl-text-editor ~/.gmrunrc
+^sep(Help)
+man page,x-terminal-emulator -T 'man gmrun' -e man gmrun
+
+Display,^tag(bl-DisplaySettings)
+Back,^back()
+ARandR Screen Layout Editor,arandr
+^sep(Help)
+man xrandr,x-terminal-emulator -T 'man xrandr' -e man xrandr
+
+System,^tag(bl-system)
+Back,^back()
+Printers,^pipe(jgmenu_run ob --cmd="bl-printing-pipemenu" --tag="bl-printing-pipemenu")
+Task Manager (htop),x-terminal-emulator -T 'htop task manager' -e htop
+Install Selected Packages,^pipe(bl-install-pipemenu)
+Synaptic Package Manager,pkexec synaptic
+Login Settings,pkexec bl-text-editor /etc/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm.conf
+Login Interface,lightdm-gtk-greeter-settings-pkexec
+GParted,pkexec gparted
+Set Default Browser,"""x-terminal-emulator -T 'Select Default Browser' -e sh -c 'sudo update-alternatives --config x-www-browser; sleep 5'"""
+Edit Debian Alternatives,galternatives
+^sep()
+About Bunsen Alternatives,yad --button="OK":0 --center --window-icon=distributor-logo-bunsenlabs --text-info --title="About Bunsen Alternatives" --filename="/usr/share/bunsen/docs/helpfile-bl-alternatives.txt" --width=900 --height=700 --fontname=Monospace
+
+
+^tag(lx-apps)
