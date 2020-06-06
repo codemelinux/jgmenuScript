@@ -19,6 +19,6 @@ echo "Successfully installed."
 
 echo ""
 echo "Copying CodeMe.Linux jgmenu config"
-cp -r ~/jgmenuScript/customJgmenuConfig/jgmenu/ ~/.config/
+cp -r ~/Downloads/jgmenuScript/customJgmenuConfig/jgmenu/ ~/.config/
 echo "process complete.... :)"
 
