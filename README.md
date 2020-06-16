@@ -2,7 +2,8 @@
 
 cd Downloads <br/>
 git clone https://github.com/codemelinux/jgmenuScript.git <br/>
-cd 
+cd jgmenuScript <br/>
+bash jgmenuInstall.sh
 
 
 # Delete jgmenu
