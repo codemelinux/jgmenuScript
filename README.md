@@ -1,4 +1,6 @@
-# jgmenuScript
+# jgmenuScript Installation
+
+git 
 
 
 # Delete jgmenu
