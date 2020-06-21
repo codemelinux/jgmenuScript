@@ -1,6 +1,6 @@
 # jgmenuScript Installation
 
-cd Downloads && git clone https://github.com/codemelinux/jgmenuScript.git <br/>
+cd ~/Downloads && git clone https://github.com/codemelinux/jgmenuScript.git <br/>
 <br/>
 cd jgmenuScript && bash jgmenuInstall.sh <br/>
 
