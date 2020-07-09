@@ -4,7 +4,7 @@
 echo "Installing important libraries"
 #### Installing libraries ###
 
-sudo apt update && sudo apt install -y libx11-xcb-dev libxrandr-dev libghc-cairo-dev libghc-pango-dev librsvg2-dev libmenu-cache-dev git
+sudo apt update && sudo apt install -y libx11-xcb-dev libxrandr-dev libghc-cairo-dev libghc-pango-dev librsvg2-dev libmenu-cache-dev libxml2-dev git
 echo "Successfully installed."
 echo ""
 
